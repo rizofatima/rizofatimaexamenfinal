@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rauw Alejandro | Sitio Oficial & Discografía</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#0a0914',
+                            card: '#131126',
+                            border: '#2a2450',
+                            neonBlue: '#00f0ff',
+                            neonViolet: '#a855f7',
+                            neonPink: '#ff007f',
+                            gold: '#fbbf24'
+                        }
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 30%, rgba(168, 85, 247, 0.25), rgba(0, 240, 255, 0.1) 40%, transparent 70%)',
+                        'neon-card': 'linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(0, 240, 255, 0.05))'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0914;
+            color: #e2e8f0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6), 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .text-glow-pink {
+            text-shadow: 0 0 12px rgba(255, 0, 127, 0.6), 0 0 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .border-glow {
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        .cyber-glass {
+            background: rgba(19, 17, 38, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0914;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2450;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a855f7;
+        }
+
+        /* Pulse glowing animation */
+        @keyframes floatGlow {
+            0%, 100% { transform: translateY(0px); filter: drop-shadow(0 0 15px rgba(0,240,255,0.4)); }
+            50% { transform: translateY(-10px); filter: drop-shadow(0 0 25px rgba(168,85,247,0.6)); }
+        }
+        .animate-float {
+            animation: floatGlow 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyber-neonPink selection:text-white">
+
+    <nav class="fixed top-0 left-0 right-0 z-40 cyber-glass border-b border-cyber-border/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <span class="font-orbitron font-extrabold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue via-cyber-neonViolet to-cyber-neonPink">
+                    RAUW<span class="text-cyber-neonBlue">.</span>
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 font-orbitron text-xs tracking-wider">
+                <a href="#bio" class="hover:text-cyber-neonBlue transition-colors uppercase">Biografía</a>
+                <a href="#albums" class="hover:text-cyber-neonBlue transition-colors uppercase">Álbumes</a>
+                <a href="#videos" class="hover:text-cyber-neonBlue transition-colors uppercase">Éxitos</a>
+                <a href="#gallery" class="hover:text-cyber-neonBlue transition-colors uppercase">Galería</a>
+                <a href="#tours" class="px-4 py-2 rounded-full border border-cyber-neonViolet hover:bg-cyber-neonViolet/20 text-cyber-neonViolet hover:text-white transition-all shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                    SATURNO WORLD TOUR
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-2xl text-gray-300 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden cyber-glass border-b border-cyber-border px-6 py-4 flex flex-col space-y-4 font-orbitron text-sm">
+            <a href="#bio" class="mobile-link hover:text-cyber-neonBlue">Biografía</a>
+            <a href="#albums" class="mobile-link hover:text-cyber-neonBlue">Álbumes</a>
+            <a href="#videos" class="mobile-link hover:text-cyber-neonBlue">Éxitos</a>
+            <a href="#gallery" class="mobile-link hover:text-cyber-neonBlue">Galería</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-hero-glow overflow-hidden">
+        <!-- Abstract Background Lines -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-cyber-neonViolet rounded-full filter blur-[120px]"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyber-neonBlue rounded-full filter blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyber-neonBlue/40 bg-cyber-neonBlue/10 text-cyber-neonBlue text-xs font-orbitron tracking-widest uppercase">
+                    <i class="fa-solid fa-bolt"></i> El Rey del Pop Urbano & Synth-R&B
+                </div>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-orbitron font-black tracking-tight text-white leading-none">
+                    RAUW <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue via-cyber-neonViolet to-cyber-neonPink text-glow">
+                        ALEJANDRO
+                    </span>
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+                    Raúl Alejandro Ocasio Ruiz, conocido mundialmente como <strong class="text-white">Rauw Alejandro</strong>. Cantante, compositor y bailarín puertorriqueño que revolucionó la música latina fusionando R&B contemporáneo, Synth-pop retrofuturista y Reggaeton.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
+                    <a href="#albums" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyber-neonBlue to-cyber-neonViolet text-black font-orbitron font-bold text-sm tracking-wider hover:opacity-90 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center gap-2">
+                        <i class="fa-solid fa-compact-disc"></i> EXPLORAR ÁLBUMES
+                    </a>
+                    <button onclick="playTrack('Todo De Ti', 'Vice Versa', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500')" class="px-8 py-3.5 rounded-xl cyber-glass border border-cyber-neonViolet text-white font-orbitron font-semibold text-sm tracking-wider hover:bg-cyber-neonViolet/20 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-play text-cyber-neonPink"></i> REPRODUCIR HIT
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visual Hero Card / Image Frame -->
+            <div class="relative flex justify-center">
+                <div class="relative w-80 h-96 sm:w-96 sm:h-[450px] rounded-3xl overflow-hidden border-2 border-cyber-neonBlue/50 shadow-[0_0_40px_rgba(168,85,247,0.3)] animate-float">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop" 
+                         alt="Rauw Alejandro Aesthetic" 
+                         class="w-full h-full object-cover filter brightness-95 contrast-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cyber-bg via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 p-4 cyber-glass rounded-2xl border border-white/10">
+                        <p class="font-orbitron text-xs text-cyber-neonBlue tracking-widest uppercase">Último Gran Lanzamiento</p>
+                        <h3 class="font-orbitron font-bold text-lg text-white">COSA NUESTRA (2024)</h3>
+                        <p class="text-xs text-gray-400">Una evolución hacia el Son, Salsa, R&B y sonidos caribeños clásicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bio" class="py-20 relative bg-cyber-bg border-t border-cyber-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-orbitron text-3xl sm:text-4xl font-extrabold text-white tracking-wider">
+                    BIOGRAFÍA Y <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue to-cyber-neonPink">TRAYECTORIA</span>
+                </h2>
+                <div class="h-1 w-20 bg-cyber-neonBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Bio Card 1 -->
+                <div class="cyber-glass p-8 rounded-2xl border border-cyber-border hover:border-cyber-neonBlue/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-neonBlue/10 flex items-center justify-center text-cyber-neonBlue text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-flag"></i>
+                    </div>
+                    <h3 class="font-orbitron font-bold text-xl text-white mb-3">Orígenes en San Juan</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Nacido en San Juan, Puerto Rico (10 de enero de 1993). Creció en un entorno musical influenciado por su padre músico y su madre bailarina. Antes de la música, Rauw destacó fuertemente en el fútbol profesional.
+                    </p>
+                </div>
+
+                <!-- Bio Card 2 -->
+                <div class="cyber-glass p-8 rounded-2xl border border-cyber-border hover:border-cyber-neonViolet/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-neonViolet/10 flex items-center justify-center text-cyber-neonViolet text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <h3 class="font-orbitron font-bold text-xl text-white mb-3">Estilo e Innovación</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Su sello característico es la habilidad única para ejecutar complejas coreografías mientras canta en vivo. Pionero en incorporar Synth-Pop de los 80s y House en el Reggaeton moderno con hits globales como <em class="text-cyber-neonBlue">"Todo De Ti"</em>.
+                    </p>
+                </div>
+
+                <!-- Bio Card 3 -->
+                <div class="cyber-glass p-8 rounded-2xl border border-cyber-border hover:border-cyber-neonPink/50 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyber-neonPink/10 flex items-center justify-center text-cyber-neonPink text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="font-orbitron font-bold text-xl text-white mb-3">Reconocimiento Global</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Ganador de Latin Grammys, récords de reproducciones en Spotify y sold-outs en estadios globales. Ha colaborado con gigantes como Rosalía, Shakira, Bad Bunny, Pharrell Williams y Selena Gomez.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="cyber-glass p-6 rounded-xl">
+                    <span class="font-orbitron font-extrabold text-3xl sm:text-4xl text-cyber-neonBlue">50M+</span>
+                    <p class="text-xs text-gray-400 font-orbitron mt-2">Oyentes Mensuales en Spotify</p>
+                </div>
+                <div class="cyber-glass p-6 rounded-xl">
+                    <span class="font-orbitron font-extrabold text-3xl sm:text-4xl text-cyber-neonViolet">5+</span>
+                    <p class="text-xs text-gray-400 font-orbitron mt-2">Álbumes de Estudio</p>
+                </div>
+                <div class="cyber-glass p-6 rounded-xl">
+                    <span class="font-orbitron font-extrabold text-3xl sm:text-4xl text-cyber-neonPink">Billones</span>
+                    <p class="text-xs text-gray-400 font-orbitron mt-2">Reproducciones Globales</p>
+                </div>
+                <div class="cyber-glass p-6 rounded-xl">
+                    <span class="font-orbitron font-extrabold text-3xl sm:text-4xl text-cyber-gold">Grammy</span>
+                    <p class="text-xs text-gray-400 font-orbitron mt-2">Latin Grammy Winner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="albums" class="py-20 bg-cyber-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-orbitron text-3xl sm:text-4xl font-extrabold text-white tracking-wider">
+                    DISCOGRAFÍA <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue via-cyber-neonViolet to-cyber-neonPink">PRINCIPAL</span>
+                </h2>
+                <p class="text-gray-400 mt-2">Haz clic en cualquier álbum para explorar el tracklist y reproducir demos.</p>
+                <div class="h-1 w-20 bg-cyber-neonViolet mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="albums-grid">
+                <!-- Album Card 1: Cosa Nuestra -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-neonBlue transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop" alt="Cosa Nuestra" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-neonBlue text-black font-orbitron font-bold text-xs">2024</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">Cosa Nuestra</h3>
+                            <p class="text-xs text-cyber-neonBlue font-orbitron mb-4">Salsa, Son, R&B & Latin Pop</p>
+                            <p class="text-xs text-gray-400 mb-4">Homenaje a las raíces puertorriqueñas combinadas con la sofisticación moderna del R&B.</p>
+                            
+                            <!-- Tracklist Dropdown -->
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Déjame Entrar', 'Cosa Nuestra', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500')">
+                                        <span>1. Déjame Entrar</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Touching The Sky', 'Cosa Nuestra', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500')">
+                                        <span>2. Touching The Sky</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Qué Pasaría', 'Cosa Nuestra', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500')">
+                                        <span>3. Qué Pasaría (ft. Feid)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Khé?', 'Cosa Nuestra', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500')">
+                                        <span>4. Khé? (ft. Romeo Santos)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Card 2: Saturno -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-neonViolet transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop" alt="Saturno" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-neonViolet text-white font-orbitron font-bold text-xs">2022</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">Saturno</h3>
+                            <p class="text-xs text-cyber-neonViolet font-orbitron mb-4">Cyberpunk, Synthwave & Old School Reggaeton</p>
+                            <p class="text-xs text-gray-400 mb-4">Un viaje galáctico a los sonidos rave noventeros y reggaeton clásico futurista.</p>
+                            
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Punto 40', 'Saturno', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500')">
+                                        <span>1. Punto 40 (ft. Baby Rasta)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Lokera', 'Saturno', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500')">
+                                        <span>2. Lokera (ft. Lyanno, Brray)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Lejos del Cielo', 'Saturno', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500')">
+                                        <span>3. Lejos del Cielo</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Dime Quién????', 'Saturno', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500')">
+                                        <span>4. Dime Quién????</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Card 3: Vice Versa -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-neonPink transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop" alt="Vice Versa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-neonPink text-white font-orbitron font-bold text-xs">2021</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">Vice Versa</h3>
+                            <p class="text-xs text-cyber-neonPink font-orbitron mb-4">Dance-Pop, Synth-Pop & Electro-House</p>
+                            <p class="text-xs text-gray-400 mb-4">El álbum consagratorio con el himno "Todo De Ti", consolidándolo como superestrella global.</p>
+                            
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Todo De Ti', 'Vice Versa', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500')">
+                                        <span>1. Todo De Ti</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('2/Catorce', 'Vice Versa', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500')">
+                                        <span>2. 2/Catorce (ft. Mr. Naisgai)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Desesperados', 'Vice Versa', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500')">
+                                        <span>3. Desesperados (ft. Chencho Corleone)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Cosa Guapa', 'Vice Versa', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500')">
+                                        <span>4. Cosa Guapa</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Card 4: Afrodisíaco -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-gold transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop" alt="Afrodisíaco" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-gold text-black font-orbitron font-bold text-xs">2020</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">Afrodisíaco</h3>
+                            <p class="text-xs text-cyber-gold font-orbitron mb-4">Reggaeton Urbano & Trap Latino</p>
+                            <p class="text-xs text-gray-400 mb-4">Su primer álbum de estudio oficial nominado al Grammy, lleno de colaboraciones estelares.</p>
+                            
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Tattoo Remix', 'Afrodisíaco', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500')">
+                                        <span>1. Tattoo Remix (ft. Camilo)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Reloj', 'Afrodisíaco', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500')">
+                                        <span>2. Reloj (ft. Anuel AA)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Enchule', 'Afrodisíaco', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500')">
+                                        <span>3. Enchule</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Card 5: Playa Saturno -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-neonBlue transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop" alt="Playa Saturno" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-neonBlue text-black font-orbitron font-bold text-xs">2023</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">Playa Saturno</h3>
+                            <p class="text-xs text-cyber-neonBlue font-orbitron mb-4">Perreo, Verano & Reggaeton Playero</p>
+                            <p class="text-xs text-gray-400 mb-4">Spin-off veraniego con el sazón puro del reggaeton de Puerto Rico.</p>
+                            
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Baby Hello', 'Playa Saturno', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500')">
+                                        <span>1. Baby Hello (ft. Bizarrap)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Si Te Pegas', 'Playa Saturno', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500')">
+                                        <span>2. Si Te Pegas (ft. Miguel Bosé)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Album Card 6: RR EP (con Rosalía) -->
+                <div class="cyber-glass rounded-2xl overflow-hidden border border-cyber-border hover:border-cyber-neonPink transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop" alt="RR EP" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyber-neonPink text-white font-orbitron font-bold text-xs">2023</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-orbitron font-bold text-2xl text-white">RR (EP)</h3>
+                            <p class="text-xs text-cyber-neonPink font-orbitron mb-4">Experimental Bolero & Reggaeton</p>
+                            <p class="text-xs text-gray-400 mb-4">Proyecto colaborativo romántico con Rosalía celebrando su historia.</p>
+                            
+                            <details class="group/detail">
+                                <summary class="cursor-pointer text-xs font-orbitron text-cyber-neonViolet hover:text-white flex items-center justify-between py-2 border-t border-cyber-border">
+                                    <span>LISTA DE CANCIONES</span>
+                                    <i class="fa-solid fa-chevron-down group-open/detail:rotate-180 transition-transform"></i>
+                                </summary>
+                                <ul class="mt-2 space-y-2 text-xs text-gray-300 pl-2">
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Beso', 'RR', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500')">
+                                        <span>1. Beso (ft. Rosalía)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Vampiros', 'RR', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500')">
+                                        <span>2. Vampiros (ft. Rosalía)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                    <li class="flex justify-between items-center hover:text-cyber-neonBlue cursor-pointer" onclick="playTrack('Promesa', 'RR', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500')">
+                                        <span>3. Promesa (ft. Rosalía)</span> <i class="fa-solid fa-play text-[10px]"></i>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="py-20 bg-cyber-bg border-t border-cyber-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-orbitron text-3xl sm:text-4xl font-extrabold text-white tracking-wider">
+                    VIDEOS & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue to-cyber-neonViolet">HIT SINGLES</span>
+                </h2>
+                <div class="h-1 w-20 bg-cyber-neonBlue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Video Item 1 -->
+                <div class="cyber-glass rounded-2xl overflow-hidden group border border-cyber-border hover:border-cyber-neonBlue transition-all">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Todo De Ti">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="playTrack('Todo De Ti', 'Vice Versa', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500')" class="w-14 h-14 rounded-full bg-cyber-neonBlue text-black flex items-center justify-center text-xl shadow-[0_0_15px_rgba(0,240,255,0.8)]">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] font-orbitron text-cyber-neonBlue uppercase tracking-widest">1.2B+ Views</span>
+                        <h4 class="font-orbitron font-bold text-white text-lg">Todo De Ti</h4>
+                        <p class="text-xs text-gray-400">El mega-hit global con estilo retro roller-disco.</p>
+                    </div>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="cyber-glass rounded-2xl overflow-hidden group border border-cyber-border hover:border-cyber-neonViolet transition-all">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Lokera">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="playTrack('Lokera', 'Saturno', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500')" class="w-14 h-14 rounded-full bg-cyber-neonViolet text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(168,85,247,0.8)]">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] font-orbitron text-cyber-neonViolet uppercase tracking-widest">400M+ Views</span>
+                        <h4 class="font-orbitron font-bold text-white text-lg">Lokera</h4>
+                        <p class="text-xs text-gray-400">Energía nocturna pura junto a Lyanno y Brray.</p>
+                    </div>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="cyber-glass rounded-2xl overflow-hidden group border border-cyber-border hover:border-cyber-neonPink transition-all">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" alt="Beso">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="playTrack('Beso', 'RR', 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500')" class="w-14 h-14 rounded-full bg-cyber-neonPink text-white flex items-center justify-center text-xl shadow-[0_0_15px_rgba(255,0,127,0.8)]">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] font-orbitron text-cyber-neonPink uppercase tracking-widest">600M+ Views</span>
+                        <h4 class="font-orbitron font-bold text-white text-lg">Beso (ft. Rosalía)</h4>
+                        <p class="text-xs text-gray-400">Colaboración romántica épica de alcance mundial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 bg-cyber-bg border-t border-cyber-border/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-orbitron text-3xl sm:text-4xl font-extrabold text-white tracking-wider">
+                    GALERÍA <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonPink to-cyber-gold">VISUAL</span>
+                </h2>
+                <p class="text-gray-400 text-sm mt-2">Estética futurista, shows en vivo y conceptos de álbumes.</p>
+                <div class="h-1 w-20 bg-cyber-neonPink mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative h-64 rounded-2xl overflow-hidden border border-cyber-border group">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Concierto Saturno">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-xs font-orbitron text-cyber-neonBlue">Saturno Live Show</span>
+                    </div>
+                </div>
+
+                <div class="relative h-64 rounded-2xl overflow-hidden border border-cyber-border group">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cosa Nuestra Session">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-xs font-orbitron text-cyber-gold">Cosa Nuestra Vibe</span>
+                    </div>
+                </div>
+
+                <div class="relative h-64 rounded-2xl overflow-hidden border border-cyber-border group">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Dance Routine">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-xs font-orbitron text-cyber-neonViolet">Dance Choreography</span>
+                    </div>
+                </div>
+
+                <div class="relative h-64 rounded-2xl overflow-hidden border border-cyber-border group">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Neon Aesthetics">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex items-end">
+                        <span class="text-xs font-orbitron text-cyber-neonPink">Cyber Neon Stage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#05040a] border-t border-cyber-border/60 py-12 mb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h3 class="font-orbitron font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-cyber-neonBlue via-cyber-neonViolet to-cyber-neonPink tracking-widest">
+                RAUW ALEJANDRO
+            </h3>
+            <p class="text-xs text-gray-500 font-orbitron">
+                Página conceptual interactiva tributo a Rauw Alejandro. Todos los derechos pertenecen al artista y su sello discográfico.
+            </p>
+            <div class="flex justify-center space-x-6 text-xl text-gray-400">
+                <a href="#" class="hover:text-cyber-neonBlue transition-colors"><i class="fa-brands fa-spotify"></i></a>
+                <a href="#" class="hover:text-cyber-neonPink transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-cyber-neonBlue transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-cyber-neonViolet transition-colors"><i class="fa-brands fa-apple"></i></a>
+            </div>
+            <p class="text-[11px] text-gray-600">© 2026 Rauw Alejandro Fan Experience. Diseñado con tecnología web futurista.</p>
+        </div>
+    </footer>
+
+    <div id="player-bar" class="fixed bottom-0 left-0 right-0 z-50 cyber-glass border-t border-cyber-neonBlue/40 px-4 py-3 shadow-[0_-5px_25px_rgba(0,0,0,0.8)] flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 w-1/3">
+            <img id="player-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500" alt="Current Track" class="w-12 h-12 rounded-lg object-cover border border-cyber-neonBlue/30">
+            <div class="overflow-hidden">
+                <h5 id="player-title" class="font-orbitron font-bold text-sm text-white truncate">Todo De Ti</h5>
+                <p id="player-album" class="text-xs text-cyber-neonBlue truncate">Vice Versa (2021)</p>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex flex-col items-center gap-1 w-1/3">
+            <div class="flex items-center gap-4 text-gray-300">
+                <button class="hover:text-cyber-neonBlue text-sm transition-colors"><i class="fa-solid fa-backward-step"></i></button>
+                <button id="play-btn" class="w-10 h-10 rounded-full bg-cyber-neonBlue text-black flex items-center justify-center text-sm font-bold shadow-[0_0_10px_rgba(0,240,255,0.6)] hover:scale-105 transition-transform">
+                    <i id="play-icon" class="fa-solid fa-pause"></i>
+                </button>
+                <button class="hover:text-cyber-neonBlue text-sm transition-colors"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="w-full bg-cyber-border h-1.5 rounded-full overflow-hidden cursor-pointer" id="progress-container">
+                <div id="progress-bar" class="bg-gradient-to-r from-cyber-neonBlue to-cyber-neonViolet h-full w-2/5 rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Volume & Actions -->
+        <div class="flex items-center justify-end gap-3 w-1/3 text-gray-400 text-sm">
+            <i class="fa-solid fa-volume-high text-cyber-neonBlue"></i>
+            <div class="w-20 bg-cyber-border h-1.5 rounded-full overflow-hidden hidden sm:block">
+                <div class="bg-cyber-neonBlue h-full w-3/4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let isPlaying = true;
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const playerTitle = document.getElementById('player-title');
+        const playerAlbum = document.getElementById('player-album');
+        const playerImg = document.getElementById('player-img');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Toggle Play/Pause
+        playBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playIcon.className = 'fa-solid fa-pause';
+            } else {
+                playIcon.className = 'fa-solid fa-play';
+            }
+        });
+
+        // Dynamic track player update
+        function playTrack(title, album, coverUrl) {
+            playerTitle.textContent = title;
+            playerAlbum.textContent = album;
+            if(coverUrl) playerImg.src = coverUrl;
+            isPlaying = true;
+            playIcon.className = 'fa-solid fa-pause';
+            
+            // Animated effect on progress reset
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.width = '35%';
+            }, 300);
+        }
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Simulated progress bar movement
+        setInterval(() => {
+            if (isPlaying) {
+                let currentWidth = parseFloat(progressBar.style.width) || 35;
+                if (currentWidth >= 100) {
+                    currentWidth = 0;
+                } else {
+                    currentWidth += 0.5;
+                }
+                progressBar.style.width = currentWidth + '%';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
